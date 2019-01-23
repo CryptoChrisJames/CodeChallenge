@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using CCLibrary.Data;
 using CCLibrary.Interfaces;
+using CCLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CodeChallenge.Controllers
@@ -15,21 +16,18 @@ namespace CodeChallenge.Controllers
     {
         public HttpClient _client { get; set; }
         public ApplicationDbContext _context { get; set; }
+        public SpaceXService _spaceX { get; set; }
 
         public LaunchesController(IHttpClientAccessor clientAccessor /*, ApplicationDbContext context*/)
         {
             _client = clientAccessor.Client;
             //_context = context;
+            _spaceX = new SpaceXService(_client, _context);
         }
 
         // GET api/values
         [HttpGet]
-        public async Task<ActionResult<string>> Get()
-        {
-            var response = await _client.GetAsync("v2/launchpads");
-            HttpContent content = response.Content;
-            return await content.ReadAsStringAsync();
-        }
+        public async Task<ActionResult<string>> Get() => await _spaceX.GetLaunches();
 
         // GET api/values/5
         [HttpGet("{id}")]
