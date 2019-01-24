@@ -39,7 +39,7 @@ namespace CCLibrary.Services
         } 
 
         //Retrieves the data from the appropriate source. If the Db context is
-        //provided, then it will pull the data from it. Otherwise, it will call the 
+        //provided, then the function will pull the data from it. Otherwise, it will call the 
         //SpaceX API with the Http Client.
         private async Task<List<Launch>> GetData()
         {
