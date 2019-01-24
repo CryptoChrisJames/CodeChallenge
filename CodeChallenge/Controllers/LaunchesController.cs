@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using CCLibrary.Data;
 using CCLibrary.Interfaces;
+using CCLibrary.Models;
 using CCLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,31 +28,11 @@ namespace CodeChallenge.Controllers
 
         // GET api/values
         [HttpGet]
-        public async Task<ActionResult<string>> Get() => await _spaceX.GetLaunches();
+        public async Task<List<Launch>> Get() => await _spaceX.GetLaunches();
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        public async Task<Launch> Get(string id) => await _spaceX.GetLaunch(id);
+        
     }
 }
