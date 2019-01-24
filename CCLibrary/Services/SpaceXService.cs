@@ -12,6 +12,10 @@ namespace CCLibrary.Services
 {
     public class SpaceXService
     {
+        //Class level variables for the SpaceXService injected from the controller.
+        //The availability of both the DbContext and HttpClient gives the class the ability to 
+        //retrieve the necessary data from either sources without impacting the rest of the application. 
+
         private readonly HttpClient _client;
         private readonly ApplicationDbContext _context;
 
@@ -21,17 +25,22 @@ namespace CCLibrary.Services
             _context = context;
         }
 
+        //Returns all launches. 
         public async Task<List<Launch>> GetLaunches()
         {
             return await GetData();
         }
 
+        //Returns a launch by the id. 
         public async Task<Launch> GetLaunch(string id)
         {
             var launches = await GetData();
             return launches.Where(l => l.ID == id).FirstOrDefault();
         } 
 
+        //Retrieves the data from the appropriate source. If the Db context is
+        //provided, then it will pull the data from it. Otherwise, it will call the 
+        //SpaceX API with the Http Client.
         private async Task<List<Launch>> GetData()
         {
             if(_context == null)
@@ -42,13 +51,11 @@ namespace CCLibrary.Services
             }
             else
             {
-                //var response = await _client.GetAsync("v2/launchpads");
-                //HttpContent content = response.Content;
-                //await content.ReadAsStringAsync();
-                return null;
+                return _context.Launches.ToList();
             }
         }
 
+        //Parses the JSON response from the API and populates the Name field of the data model. 
         private List<Launch> ParseData(string response)
         {
             var launches = JsonConvert.DeserializeObject<List<Launch>>(response);
@@ -60,6 +67,8 @@ namespace CCLibrary.Services
             return launches;
         }
 
+        //Auxillary nested class for retrieving the full_name object from the 
+        //JSON response. 
         public class NameParse
         {
             public string full_name { get; set; }

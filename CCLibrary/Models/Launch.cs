@@ -6,6 +6,7 @@ namespace CCLibrary.Models
 {
     public class Launch
     {
+        //Data model for the launch data.
         public string ID { get; set; }
         public string Name { get; set; }
         public string Status { get; set; }
