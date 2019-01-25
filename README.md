@@ -18,6 +18,8 @@ However, the program would have to be designed in a way so that, if the data sou
 
 3. Remove comment tag to inject into the API's constructor:
 
+![parameter](https://user-images.githubusercontent.com/22749214/51727097-f788cc00-202f-11e9-9903-f13af7f46e6f.PNG)
+
 4. Remove the comment tag to set the class variable:
 
 After these small changes, the solution will continue to function as if no changes were made. 
