@@ -5,7 +5,11 @@ VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeChallenge", "CodeChallenge\CodeChallenge.csproj", "{AD7A1486-9C64-4262-A375-456AC4C0C0CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCLibrary", "CCLibrary\CCLibrary.csproj", "{D27081BB-9B7D-4752-A783-087DA35476D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCLibrary", "CCLibrary\CCLibrary.csproj", "{D27081BB-9B7D-4752-A783-087DA35476D7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCLibrary.UnitTest", "CCLibrary.UnitTest\CCLibrary.UnitTest.csproj", "{A1A7D9E2-ADAB-4D73-B56C-4AE5F2EED93C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChallenge.IntegrationTests", "CodeChallenge.IntegrationTests\CodeChallenge.IntegrationTests.csproj", "{EAF53123-01AE-4F70-9CE7-01EB61B6B87F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{D27081BB-9B7D-4752-A783-087DA35476D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D27081BB-9B7D-4752-A783-087DA35476D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D27081BB-9B7D-4752-A783-087DA35476D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1A7D9E2-ADAB-4D73-B56C-4AE5F2EED93C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1A7D9E2-ADAB-4D73-B56C-4AE5F2EED93C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1A7D9E2-ADAB-4D73-B56C-4AE5F2EED93C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1A7D9E2-ADAB-4D73-B56C-4AE5F2EED93C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAF53123-01AE-4F70-9CE7-01EB61B6B87F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAF53123-01AE-4F70-9CE7-01EB61B6B87F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAF53123-01AE-4F70-9CE7-01EB61B6B87F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAF53123-01AE-4F70-9CE7-01EB61B6B87F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
