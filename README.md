@@ -12,7 +12,9 @@ However, the program would have to be designed in a way so that, if the data sou
 ![appsettings](https://user-images.githubusercontent.com/22749214/51726986-8fd28100-202f-11e9-9499-7cf6f28922f8.PNG)
 
 
-2. Remove comment tag to allow the DbContext to be injected:
+2. Remove comments tag to allow the DbContext to be injected:
+
+![di](https://user-images.githubusercontent.com/22749214/51727047-cb6d4b00-202f-11e9-9cff-9683b916c501.PNG)
 
 3. Remove comment tag to inject into the API's constructor:
 
