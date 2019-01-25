@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CCLibrary.Data;
 using CCLibrary.Interfaces;
 using CCLibrary.Services;
+using CodeChallenge.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -43,6 +44,14 @@ namespace CodeChallenge
 
             //Injecting the HttpClient accessor as a singleton to call the SpaceX API if the Db is not available.
             services.AddSingleton<IHttpClientAccessor, DefaultHttpClientAccessor>();
+
+            //Logging configuration.
+            services.AddLogging(builder =>
+            {
+                builder.AddConfiguration(Configuration.GetSection("Logging"))
+                .AddDebug()
+                .AddConsole();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,12 +67,7 @@ namespace CodeChallenge
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Launches}/{action=Get}/{id?}");
-            });
+            app.UseMvc();
         }
     }
 }

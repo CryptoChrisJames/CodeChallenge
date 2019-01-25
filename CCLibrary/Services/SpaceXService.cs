@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CCLibrary.Data;
 using CCLibrary.Models;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace CCLibrary.Services
@@ -62,7 +63,7 @@ namespace CCLibrary.Services
             var launchnames = JsonConvert.DeserializeObject<List<NameParse>>(response);
             for(int i = 0; i < launches.Count; i++)
             {
-                launches[i].Name = launchnames[i].full_name;
+                launches[i].Name = launchnames[i].Full_name;
             }
             return launches;
         }
@@ -71,7 +72,7 @@ namespace CCLibrary.Services
         //JSON response. 
         public class NameParse
         {
-            public string full_name { get; set; }
+            public string Full_name { get; set; }
         }
     }
 }

@@ -8,6 +8,7 @@ using CCLibrary.Interfaces;
 using CCLibrary.Models;
 using CCLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace CodeChallenge.Controllers
 {
@@ -21,12 +22,25 @@ namespace CodeChallenge.Controllers
         public HttpClient _client { get; set; }
         public ApplicationDbContext _context { get; set; }
         public SpaceXService _spaceX { get; set; }
+        public ILogger _logger { get; set; }
 
-        public LaunchesController(IHttpClientAccessor clientAccessor /*, ApplicationDbContext context*/)
+        public LaunchesController(ILogger<LaunchesController> logger, IHttpClientAccessor clientAccessor /*, ApplicationDbContext context*/)
         {
             _client = clientAccessor.Client;
             //_context = context;
+            _logger = logger;
             _spaceX = new SpaceXService(_client, _context);
+
+            _logger.LogInformation("Launches controller created successfully.");
+            if (_context == null)
+            {
+                _logger.LogInformation("No database provided, SpaceX API will be used.");
+            }
+            else
+            {
+                _logger.LogInformation("Database has been provided. " +
+                    "Data will be pulled from new data source.");
+            }
         }
 
         // GET api/Launches - returns all of the current launches
